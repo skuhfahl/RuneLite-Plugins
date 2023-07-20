@@ -20,7 +20,6 @@ public class AudioPlayer {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path).getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
-            clip.loop(0);
         }catch(Exception e){
             log.warn("Could not play sound");
         }
@@ -28,6 +27,7 @@ public class AudioPlayer {
 
 
     public void playAudio() {
+        clip.setFramePosition(0);
         clip.start();
     }
 }
